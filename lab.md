@@ -204,5 +204,5 @@ You should see the sql vulnerabilities that you found on the application.
 10.) If I wanted to scan for more types of vulnerabilities what settings would I change?
 
 ## Conclusion
-
+With these two exercises you now have a better understanding of the basics that surrond w3af. From crawling, to auditing a website w3af can handle a bunch of differe opterations to attack a website. One topic not discussed in this lab but is of interest is the explotiation features. I encourage you to explore the options that w3af has in exploitation in the documentation. These attacks can be useful when tyring to run penetration tests. Hopefully you had a fun time and thank you for your particiopation!
 
