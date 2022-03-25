@@ -108,10 +108,101 @@ systemctl restart apache2
 6. When you are read to move on set the DVWA Security level to Low. You can find this setting in the *DVWA Security* tab.
 7. Your done! Lets start finding those damn vulnerabilities.
 
- 
-If w3af is not installed run the following commands.
-sudo apt-get update
-sudo apt-get install -y w3af
-We will strictly be working with the command line version for the simplicity of this lab exercise. If you would like to use the GUI feel free but instructions will not be provided for this functionality. To run w3af on command line use the following command:
-/usr/share/w3af/w3af_console
+## Exercises
+
+### Crawling the Website
+
+W3af provides crawling functionality of websites. With this functionality you can discover all the documents availalbe on a domain. In this exercise we will be crawling all of the different documents on the DVWA website.
+
+1. Change directories to where you have w3af installed. It should be installed default at the following directory.
+```
+cd /usr/share/w3af
+```
+2. Now we are goint to have to make a special file that w3af uses in order to "login" to DVWA. DVWA works through keeping track of your SESSION_ID. This is a session that is held on the server so that when passed in as a cookie it knows which user is sending the request. This act is stateful. As such w3af needs to get that cookie in order to login. In order to pass in that cookie to w3af you have to capture it on the browser than paste it into a new file that w3af can read. Follow the next steps in order to complete this:
+
+    1. Login to DVWA on your browser of choice.
+    2. Pull up the inspection tool > Network tab and navigate to a new page.
+    3. You should see the request that was sent to the server. Click on that request and search for the information in the picture below. The information is sent as a cookie header during the request.
+    4. Extract this cookie and create a new file in the _root_ directory of w3af.
+    ```
+    echo "Cookie: PHPSESSIONID={session_id}; security=low" > dvwa-headers.txt
+    ```
+3. Copy the script given with the lab named dvwa-crawler.w3af to the installation directory of w3af. Make sure to look inside the file to understand what is happening.    
+4. Run the script in w3af using the following command:
+```
+./w3af_console -s dvwa-crawler.txt
+```
+5. Answer questions 1-5 in the questions section.
+
+### Scanning for SQL Vulnerabilities
+
+As we have recently learned in class SQL vulnerabilities pose a serious problem to web applications. There are many tactics used by new web applications to eliminate sql injection i.e. prepared statements. Many old applications however still suffer from SQL vulnerabilities. This exercises focuses on how you can use w3af to detect those vulnerabilities. Instaed of giving a script of commands as we did in the last example you are going to type in the commands in order to set-up w3af for auditing. Your going to also need your session cookie that you generated in the last exercise to complete this exercise.
+
+1. Change directories to where you have w3af installed. It should be installed default at the following directory.
+```
+cd /usr/share/w3af
+```
+2. Configure w3af to run the SQL vulnerabiility check using the following commands in order. Also feel free to take a look around the application. The commands presented function similar to how you would navigate the folders of a directory. If you ever get lost in the folders use the help command to print the available options.
+```
+http-settings
+set headers_file dvwa-headers.txt
+back
+plugins
+crawl web_spider
+crawl config web_spider
+set only_forward True
+set ignore_regex .*logout.*
+back
+audit sqli
+audit blind_sqli
+back
+target
+set target http://localhost/DVWA/vulnerabilities/sql
+```
+3. Before you run the test save the settings you just configured in the profile. W3af clears out all settings upon test completion so if you messed something up having a backup will be easy to boot into.
+```
+profiles
+save_as sql-vulnerability
+```
+To reload the profile run the following commands:
+```
+profiles
+use sql-vulnerability
+```
+4. Start the scan using the start command.
+```
+start
+```
+5. You should notice that you have found some SQL vulnerabilities. Oh no! Bad developer. To confirm you have found these vulnerabilities check the knowledge database. This database stores found vulnerabilities for the current w3af session. To view the knowledge database run the following commands.
+```
+kb
+list vulns
+```
+You should see the sql vulnerabilities that you found on the application.
+6. Answer questions 6-10.
+
+## Questions
+
+1.) During the initial setup phase why did we have to set the intensity of DVWA to low?
+
+2.) How does DVWA authenticate the user of the application? Why do we care about this while running w3af?
+
+3.) Where can I find the cookies that are sent to the server on a website?
+
+4.) Inside the script in the Crawling exercise why do we ignore the logout endpoint?
+
+5.) From the output of the crawling exercise what is different between the output-http.txt vs the output-w3af.txt?
+
+6.) How are you able to enable plugins in w3af?
+
+7.) What are the benefits of saving profiles while using w3af (you may want to do supplemental research)?
+
+8.) What was the SQL Vulnerability that you found?
+
+9.) Where can I go to find past vulnerabilities from previous runs of the application?
+
+10.) If I wanted to scan for more types of vulnerabilities what settings would I change?
+
+## Conclusion
+
 
