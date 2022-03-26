@@ -50,7 +50,7 @@ cd /var/www/html
 ```
 2. Pull the code from the Github repository.
 ```
-git pull origin https://github.com/digininja/DVWA
+git clone https://github.com/digininja/DVWA
 ```
 3. Change permissions on the downloaded repository. 
 ```
@@ -79,7 +79,7 @@ CREATE DATABASE dvwa;
 3. Create the user that DVWA will use to log in. Also, grant all privileges for the user for the dvwa database. Exit MySQL afterwords.
 ```
 CREATE USER dvwa@'127.0.0.1' IDENTIFIED BY p@ssw0rd;
-GRANT ALL PRIVLIGES ON dvwa.* TO 'dvwa'@'localhost' IDENTIFIED BY 'p@ssw0rd';
+GRANT ALL PRIVILEGES ON dvwa.* TO dvwa@localhost IDENTIFIED BY 'p@ssw0rd';
 exit
 ```
 
@@ -132,7 +132,7 @@ cd /usr/share/w3af
     
     4. Extract this cookie and create a new file in the _root_ directory of w3af.
     ```
-    echo "Cookie: PHPSESSIONID={session_id}; security=low" > dvwa-headers.txt
+    echo "Cookie: PHPSESSID={session_id}; security=low" > dvwa-headers.txt
     ```
 3. Copy the script given with the lab named *dvwa-crawler.w3af* to the installation directory of w3af. Make sure to look inside the file to understand what is happening.    
 4. Run the script in w3af using the following command. W3af in this command takes the script and automatically runs all the commands found inside it.
@@ -164,7 +164,7 @@ audit sqli
 audit blind_sqli
 back
 target
-set target http://localhost/DVWA/vulnerabilities/sql
+set target http://localhost/DVWA/vulnerabilities/sqli/
 ```
 3. Before you run the test save the settings you just configured in the profile. W3af clears out all settings upon test completion so if you messed something up having a backup will be easy to boot into.
 ```
