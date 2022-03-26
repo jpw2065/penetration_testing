@@ -101,7 +101,7 @@ systemctl restart apache2
 
 1. At this point all dependencies are installed. Navigate to DVWA in your browser found at localhost/DVWA.
 2. Login into the application using your MySQL credentials: username: dvwa / password: p@ssw0rd. You should see the following screen at this point.
-![Successful login screen](https://drive.google.com/file/d/12FMaM6Zz2vSYaXFL0ehyyJQ4aL1EKJrR/view?usp=sharing)
+![Successful login screen](https://drive.google.com/uc?export=view&id=12FMaM6Zz2vSYaXFL0ehyyJQ4aL1EKJrR)
 3. Click on the button *Create / Reset Database*. This will redirect you back to the login screen.
 4. Login into the application again but this time with the credentials: username: admin / password: password.
 5. Explore the applcation. Note that the File Upload, and Insecure CAPTCHA options will not be available as we did not install the necessary libraries / do the proper configurations to make those function.
@@ -122,8 +122,9 @@ cd /usr/share/w3af
 
     1. Login to DVWA on your browser of choice.
     2. Pull up the inspection tool > Network tab and navigate to a new page.
-    3. You should see the request that was sent to the server. Click on that request and search for the information in the picture below. The information is sent as a cookie header during the request.
-    4. Extract this cookie and create a new file in the _root_ directory of w3af.
+    3. You should see the request that was sent to the server. Click on that request and search for the information in the picture below. The information is sent as a cookie header during the request.\
+![Sesssion Token Location](https://drive.google.com/uc?export=view&id=1W0ctXt5_O-VUlpCUJqzvAd-0JWfxztoF)
+    5. Extract this cookie and create a new file in the _root_ directory of w3af.
     ```
     echo "Cookie: PHPSESSIONID={session_id}; security=low" > dvwa-headers.txt
     ```
