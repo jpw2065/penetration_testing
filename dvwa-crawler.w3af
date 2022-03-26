@@ -1,0 +1,54 @@
+# Navigate to the plugins settings.
+plugins
+
+# Enable both console output, and text file output.
+output console,text_file
+
+# Navigate to the text file output settings.
+output config text_file
+
+# Set both http, and output file to a local file that is generated at runtime.
+set output_file output-w3af.txt
+set http_output_file output-http.txt
+
+# Set verbose printing to false for file output.
+set verbose false
+back
+
+# Disable verbose printing for console output.
+output config console
+set verbose false
+back
+
+# Load in the web spider plugin so we can discover new web pages.
+crawl web_spider
+
+# Change the settings for the web spider.
+crawl config web_spider
+
+# Only go to links that are under the same target URL - this prevents us navigating off the page.
+set only_forward True
+
+# Ignore the logout PHP file so we do not lose our session.
+set ignore_regex .*logout.*
+back
+back
+
+# Navigate to the http-settings menu.
+http-settings
+
+# Set our headers file with the session cookie.
+set headers_file dvwa-headers.txt
+back
+
+# Navigate to the target menu.
+target
+
+# Set the target of the attack to the DVWA.
+set target http://localhost/DVWA
+back
+
+# Start the scan.
+start
+exit
+
