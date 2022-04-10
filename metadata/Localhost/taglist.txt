@@ -1,0 +1,36 @@
+Author
+Bit Depth
+Byte Order Mark
+Color Type
+Compression
+Content Type
+Create Date
+Creator
+Directory
+Error
+ExifTool Version Number
+File Access Date/Time
+File Inode Change Date/Time
+File Modification Date/Time
+File Name
+File Permissions
+File Size
+File Type
+File Type Extension
+Filter
+Image Height
+Image Size
+Image Width
+Interlace
+Linearized
+Line Count
+Megapixels
+MIME Encoding
+MIME Type
+Modify Date
+Newlines
+Page Count
+PDF Version
+Producer
+Title
+Word Count

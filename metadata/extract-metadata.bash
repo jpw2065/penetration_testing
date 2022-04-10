@@ -5,6 +5,8 @@
 REPORT=$1
 INPUT_URLS=$2
 WEBSITE_DIRECTORY="$REPORT/website"
+ATTRIBUTES_FILE="$REPORT/attributes.csv"
+TAGLIST_FILE="$REPORT/taglist.txt"
 
 # Create directories.
 
@@ -21,6 +23,11 @@ then
 fi
 
 mkdir "tmp"
+
+# Clear out the attributes and the taglist file
+
+> $ATTRIBUTES_FILE
+> $TAGLIST_FILE
 
 # Read url-sites.txt, download and save the file, then extract metadata and store in .csv. 
 cat $INPUT_URLS | while read url; do
@@ -53,5 +60,16 @@ cat $INPUT_URLS | while read url; do
 		echo "------"
 		mkdir -p "$WEBSITE_DIRECTORY$DIRNAME"
 		mv tmp/downloaded_item $LOCALPATH
+
+		exiftool $LOCALPATH | while read attribute; do
+			IFS=':' read -ra SPLITATTR <<< "$attribute"
+			ATTR=$(echo "${SPLITATTR[0]}" | sed 's/ *$//')
+			VALUE=$(echo "${SPLITATTR[1]}" | sed 's/ *$//')
+			echo "$ATTR" >> $TAGLIST_FILE 
+			echo "\"$ATTR\",\"$VALUE\"" >> $ATTRIBUTES_FILE 
+		done
 	fi
 done
+
+# Sort and write the unique taglist data to disk
+sort -u -o $TAGLIST_FILE $TAGLIST_FILE
