@@ -1,0 +1,136 @@
+GET http://localhost/DVWA HTTP/1.1
+
+GET http://localhost/DVWA/ HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/js/dvwaPage.js HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/js/ HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/ HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/js/add_event_listeners.js HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/includes/ HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/css/ HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/images/ HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/images/dollar.png HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/images/login_logo.png HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/images/lock.png HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/images/spanner.png HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/includes/dvwaPage.inc.php HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/includes/DBMS/ HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/upload/ HTTP/1.1
+
+GET http://localhost/DVWA/instructions.php HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/images/warning.png HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/images/logo.png HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/images/RandomStorm.png HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/css/main.css HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/weak_id/ HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/csp/ HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/css/help.css HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/css/login.css HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/css/source.css HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/fi/?page=include.php HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/brute/ HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/xss_d/ HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/sqli_blind/ HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/captcha/ HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/sqli/ HTTP/1.1
+
+GET http://localhost/DVWA/security.php HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/exec/ HTTP/1.1
+
+GET http://localhost/DVWA/about.php HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/xss_s/ HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/csrf/ HTTP/1.1
+
+GET http://localhost/DVWA/setup.php HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/javascript/ HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/xss_r/ HTTP/1.1
+
+GET http://localhost/DVWA/phpinfo.php HTTP/1.1
+
+GET http://localhost/DVWA/favicon.ico HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/includes/DBMS/MySQL.php HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/ HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/includes/DBMS/PGSQL.php HTTP/1.1
+
+GET http://localhost/DVWA/README.tr.md HTTP/1.1
+
+GET http://localhost/DVWA/instructions.php?doc=PHPIDS-license HTTP/1.1
+
+GET http://localhost/DVWA/security.php?test=%22%3E%3Cscript%3Eeval%28window.name%29%3C%2Fscript%3E HTTP/1.1
+
+GET http://localhost/DVWA/instructions.php?doc=readme HTTP/1.1
+
+GET http://localhost/DVWA/README.zh.md HTTP/1.1
+
+GET http://localhost/DVWA/instructions.php?doc=PDF HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/fi/?page=file3.php HTTP/1.1
+
+GET http://localhost/DVWA/instructions.php?doc=copying HTTP/1.1
+
+GET http://localhost/DVWA/ids_log.php HTTP/1.1
+
+GET http://localhost/DVWA/instructions.php?doc=changelog HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/fi/?page=file2.php HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/fi/?page=file1.php HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/view_help.php HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/view_source.php HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/view_source_all.php HTTP/1.1
+
+GET http://localhost/DVWA/docs/DVWA_v1.3.pdf HTTP/1.1
+
+GET http://localhost/DVWA/docs/ HTTP/1.1
+
+GET http://localhost/DVWA/docs/pdf.html HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/includes/Parsedown.php HTTP/1.1
+
+GET http://localhost/DVWA/dvwa/includes/dvwaPhpIds.inc.php HTTP/1.1
+
+GET http://localhost/DVWA/security.php?phpids=off HTTP/1.1
+
+GET http://localhost/DVWA/vulnerabilities/fi/ HTTP/1.1
+
+GET http://localhost/DVWA/security.php?phpids=on HTTP/1.1
+

@@ -1,0 +1,49 @@
+# Navigate to the plugins settings.
+plugins
+
+# Enable both console output, and export requests output.
+output console,export_requests
+
+# Template the export_requests ouptut directory. The export requests allows us to get the URLs from the scan.
+output config export_requests
+set output_file /home/kali/Desktop/penetration_testing/metadata/encoded-spidered-urls.txt
+back
+
+# Load in the web spider plugin so we can discover new web pages.
+crawl web_spider
+
+# Change the settings for the web spider.
+crawl config web_spider
+
+# Only go to links that are under the same target URL - this prevents us navigating off the page.
+set only_forward True
+set ignore_regex .*logout.*
+back
+
+# Go back to the home page.
+back
+
+# Navigate to the http-settings menu.
+http-settings
+
+# Set our headers file with the session cookie.
+set headers_file dvwa-headers.txt
+back
+
+# Set the form settings whichb are located in the misc settings.
+misc-settings
+
+# Set the form id list to null which allows us to skip forms.
+set form_id_list [{}]
+back
+
+# Navigate to the target menu.
+target
+
+# Template the target of the attack to something we can pass into this configuration file.
+set target http://localhost/DVWA 
+back
+
+# Start the scan.
+start
+exit
