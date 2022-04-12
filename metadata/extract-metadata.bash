@@ -4,9 +4,9 @@
 
 REPORT=$1
 INPUT_URLS=$2
-WEBSITE_DIRECTORY="$REPORT/website"
-ATTRIBUTES_FILE="$REPORT/attributes.csv"
-TAGLIST_FILE="$REPORT/taglist.txt"
+WEBSITE_DIRECTORY="`pwd`/$REPORT/website"
+ATTRIBUTES_FILE="`pwd`/$REPORT/attributes.csv"
+TAGLIST_FILE="`pwd`/$REPORT/taglist.txt"
 
 # Create directories.
 
@@ -15,7 +15,7 @@ then
 	rm -r $WEBSITE_DIRECTORY
 fi
 
-mkdir -p "$REPORT/website"
+mkdir -p $WEBSITE_DIRECTORY 
 
 if [ -d "tmp" ]
 then
@@ -61,6 +61,7 @@ cat $INPUT_URLS | while read url; do
 		mkdir -p "$WEBSITE_DIRECTORY$DIRNAME"
 		mv tmp/downloaded_item $LOCALPATH
 
+		echo "\"$LOCALPATH\"," >> $ATTRIBUTES_FILE
 		exiftool $LOCALPATH | while read attribute; do
 			IFS=':' read -ra SPLITATTR <<< "$attribute"
 			ATTR=$(echo "${SPLITATTR[0]}" | sed 's/ *$//')
@@ -68,6 +69,7 @@ cat $INPUT_URLS | while read url; do
 			echo "$ATTR" >> $TAGLIST_FILE 
 			echo "\"$ATTR\",\"$VALUE\"" >> $ATTRIBUTES_FILE 
 		done
+		echo "," >> $ATTRIBUTES_FILE
 	fi
 done
 

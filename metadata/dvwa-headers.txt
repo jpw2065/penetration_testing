@@ -1,1 +1,0 @@
-Cookie: PHPSESSID=brogfhj8uncm3g2nt42kaesibl; security=low

@@ -17,18 +17,18 @@ crawl config web_spider
 
 # Only go to links that are under the same target URL - this prevents us navigating off the page.
 set only_forward True
-set ignore_regex .*logout.*
+# set ignore_regex .*https://sentientscience.com/search.*
 back
 
 # Go back to the home page.
 back
 
 # Navigate to the http-settings menu.
-http-settings
+# http-settings
 
 # Set our headers file with the session cookie.
-set headers_file dvwa-headers.txt
-back
+# set headers_file dvwa-headers.txt
+# back
 
 # Set the form settings whichb are located in the misc settings.
 misc-settings
