@@ -17,7 +17,6 @@ crawl config web_spider
 
 # Only go to links that are under the same target URL - this prevents us navigating off the page.
 set only_forward True
-# set ignore_regex .*https://sentientscience.com/search.*
 back
 
 # Go back to the home page.
